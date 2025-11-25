@@ -8,11 +8,18 @@ import {
   BreadcrumbSeparator,
 } from "../ui/breadcrumb";
 import { Link } from "react-router";
-interface Props {
-  currentPage: string;
+
+interface Breadcrumb {
+  label: string;
+  to: string
 }
 
-export const CustomBreadcrumbs = ({ currentPage }: Props) => {
+interface Props {
+  currentPage: string;
+  breadcrumbs?: Breadcrumb[]
+}
+
+export const CustomBreadcrumbs = ({ currentPage, breadcrumbs = [] }: Props) => {
   return (
     <Breadcrumb className="my-5">
       <BreadcrumbList>
@@ -21,11 +28,33 @@ export const CustomBreadcrumbs = ({ currentPage }: Props) => {
             <Link to={"/"}>Home</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
+
+
+
+        {
+          breadcrumbs.map((crumb) => {
+            return (
+              <div key={crumb.label} className="flex items-center">
+                <BreadcrumbItem >
+                  <BreadcrumbSeparator>
+                    <SlashIcon />
+                  </BreadcrumbSeparator>
+                  <BreadcrumbLink asChild>
+                    <Link to={crumb.to}>{crumb.label}</Link>
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+
+              </div>
+            )
+
+          })
+        }
         <BreadcrumbSeparator>
           <SlashIcon />
         </BreadcrumbSeparator>
+
         <BreadcrumbItem>
-          <BreadcrumbLink>{currentPage}</BreadcrumbLink>
+          <BreadcrumbLink className="text-black">{currentPage}</BreadcrumbLink>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
