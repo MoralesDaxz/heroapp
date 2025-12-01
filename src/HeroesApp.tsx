@@ -1,13 +1,16 @@
 import React from "react";
 import { RouterProvider } from "react-router";
 import { appRouter } from "./router/app.router";
-
-
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 const HeroesApp = () => {
+  const queryClient = new QueryClient();
   return (
     <>
-      <RouterProvider router={appRouter} />
-      
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={appRouter} />
+        <ReactQueryDevtools initialIsOpen={true} />
+      </QueryClientProvider>
     </>
   );
 };
