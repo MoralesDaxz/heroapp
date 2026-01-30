@@ -124,3 +124,10 @@
 *::before {
   box-sizing: border-box;
 }
+:root{
+  --strengthColor:#df1111;
+  --intelligenceColor: #2b7fff;
+  --speedColor: #00c950;
+  --resistanceColor: #ad46ff;
+
+}

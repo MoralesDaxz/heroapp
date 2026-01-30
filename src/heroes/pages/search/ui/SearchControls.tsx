@@ -16,7 +16,7 @@ export const SearchControls = () => {
         </div>
 
         {/* Action buttons */}
-        <div className="flex gap-2">
+        <div className="flex flex-col md:flex-row gap-2">
           <Button variant="outline" className="h-12 bg-transparent">
             <Filter className="h-4 w-4 mr-2" />
             Filters
