@@ -13,6 +13,7 @@ export const HeroStats = () => {
   const porcentageFavorites = summary
     ? ((favoriteCount / summary.totalHeroes) * 100).toFixed(1)
     : "0";
+ 
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
       <div onClick={() => handleTab("all", "all")} className="cursor-pointer">

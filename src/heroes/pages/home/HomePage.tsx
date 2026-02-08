@@ -7,12 +7,14 @@ import { CustomBreadcrumbs } from "@/components/custom/CustomBreadcrumbs";
 import { useHomePageParams } from "@/heroes/hooks/useHomePageParams";
 import HeroTabs from "@/heroes/components/HeroTabs";
 import { useHeroSummary } from "@/heroes/hooks/useHeroSummary";
-import { Loader } from "lucide-react";
+import { CustomLoader } from "@/components/custom/CustomLoader";
+import { CustomSlowLoadNotice } from "@/components/custom/CustomSlowLoadNotice";
 
 export const HomePage = () => {
   const { page, limit, category } = useHomePageParams();
   const { data: heroesResponse } = usePaginatedHero(+page, +limit, category);
   const { isFetching, isLoading } = useHeroSummary();
+
   return (
     <>
       <CustomJumbotron
@@ -25,10 +27,9 @@ export const HomePage = () => {
 
       {isLoading || isFetching ? (
         <>
-          <div className="w-full text-center py-10 text-lg font-medium">
-            Loading Heroes...
-          </div>
-          <Loader width={50} height={50} className="mx-auto animate-spin" />
+          <CustomLoader text={"Loading Heroes..."}>
+            <CustomSlowLoadNotice isActive={isLoading || isFetching} />
+          </CustomLoader>
         </>
       ) : (
         <>
