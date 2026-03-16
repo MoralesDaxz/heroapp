@@ -15,12 +15,12 @@ export const CustomSlowLoadNotice = ({ isActive, children }: Props) => {
   if (!isSlow) return null;
 
   return (
-    <div className="mt-4 text-center flex gap-2">
+    <div className="mt-4 text-center flex flex-col items-center justify-center ">
       <p>Is it taking too long?</p> 
       <p>The backend may be sleeping (free hosting).</p>
       
       <Link
-        className=" bg-cyan-200 font-medium p-2 rounded-2xl text-black hover:opacity-80"
+        className="bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text font-medium p-2 rounded-2xl text-transparent hover:opacity-80 outline-1 mt-2"
         to={BACKEND_URL}
         target="_blank"
       >
